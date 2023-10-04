@@ -1,7 +1,3 @@
-import json
-import numpy as np
-import PIL
-import requests as req
 from diffusers import StableDiffusionPipeline
 import torch
 from io import BytesIO
@@ -13,9 +9,9 @@ class InferlessPythonModel:
         self.pipe = StableDiffusionPipeline.from_pretrained(
             "stabilityai/stable-diffusion-2-1",
             torch_dtype=torch.float16,
-            
+            device_map='auto'
         )
-        self.pipe = self.pipe.to("cuda:0")
+
 
     def infer(self, prompt):
         image = self.pipe(prompt).images[0]

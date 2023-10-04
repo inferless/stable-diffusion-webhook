@@ -13,7 +13,8 @@ class InferlessPythonModel:
         )
 
 
-    def infer(self, prompt):
+    def infer(self, inputs):
+        prompt = inputs["prompt"]
         image = self.pipe(prompt).images[0]
         buff = BytesIO()
         image.save(buff, format="JPEG")

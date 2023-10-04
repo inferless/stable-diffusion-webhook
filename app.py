@@ -18,7 +18,7 @@ class InferlessPythonModel:
         image = self.pipe(prompt).images[0]
         buff = BytesIO()
         image.save(buff, format="JPEG")
-        img_str = base64.b64encode(buff.getvalue())
+        img_str = base64.b64encode(buff.getvalue()).decode()
         return { "generated_image_base64" : img_str }
 
     def finalize(self):

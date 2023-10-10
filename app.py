@@ -2,16 +2,23 @@ from diffusers import StableDiffusionPipeline
 import torch
 from io import BytesIO
 import base64
+from huggingface_hub import snapshot_download
 
 
 class InferlessPythonModel:
     def initialize(self):
         self.pipe = StableDiffusionPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-2-1",
+            "runwayml/stable-diffusion-v1-5",
             torch_dtype=torch.float16,
             device_map='auto'
         )
-
+        local_path = "/var/nfs-mount/config-volume/model"
+        if os.path.exists(local_path) == False :
+            os.makedirs(local_path)
+            snapshot_download(
+                "runwayml/stable-diffusion-v1-5",
+                local_dir=local_path,
+            )
 
     def infer(self, inputs):
         prompt = inputs["prompt"]

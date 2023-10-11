@@ -7,11 +7,7 @@ import os
 
 class InferlessPythonModel:
     def initialize(self):
-        self.pipe = StableDiffusionPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5",
-            torch_dtype=torch.float16,
-            device_map='auto'
-        )
+        
         local_path = "/var/nfs-mount/config-volume/model"
         if os.path.exists(local_path) == False :
             os.makedirs(local_path)
@@ -19,7 +15,11 @@ class InferlessPythonModel:
                 "runwayml/stable-diffusion-v1-5",
                 local_dir=local_path,
             )
-
+        self.pipe = StableDiffusionPipeline.from_pretrained(
+            local_path,
+            torch_dtype=torch.float16,
+            device_map='auto'
+        )
     def infer(self, inputs):
         prompt = inputs["prompt"]
         image = self.pipe(prompt).images[0]

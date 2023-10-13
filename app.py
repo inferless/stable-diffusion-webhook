@@ -8,7 +8,7 @@ import os
 class InferlessPythonModel:
     def initialize(self):
         
-        local_path = "/var/nfs-mount/LLama2-finetune"
+        local_path = "/var/nfs-mount/LLama2-finetune/model"
         if os.path.exists(local_path) == False :
             os.makedirs(local_path)
             snapshot_download(

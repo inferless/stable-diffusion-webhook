@@ -10,7 +10,6 @@ class InferlessPythonModel:
         
         local_path = "/var/nfs-mount/LLama2-finetune"
         if os.path.exists(local_path + "model_index.json") == False :
-            os.makedirs(local_path)
             snapshot_download(
                 "runwayml/stable-diffusion-v1-5",
                 local_dir=local_path,

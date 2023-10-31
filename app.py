@@ -8,7 +8,7 @@ import os
 class InferlessPythonModel:
     def initialize(self):
         
-        local_path = "/var/nfs-mount/LLama2-finetune"
+        local_path = "/var/nfs-mount/stable-diff-test"
         if os.path.exists(local_path + "model_index.json") == False :
             snapshot_download(
                 "runwayml/stable-diffusion-v1-5",

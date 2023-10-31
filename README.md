@@ -1,4 +1,4 @@
-# Llama-2-7b
+# Diffusion Template
 This is template for diffusion-based operation with custom libs 
 
 ---

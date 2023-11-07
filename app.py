@@ -7,15 +7,11 @@ import os
 
 class InferlessPythonModel:
     def initialize(self):
-        
-        local_path = "/var/nfs-mount/stable-diff-test"
-        if os.path.exists(local_path + "model_index.json") == False :
-            snapshot_download(
-                "runwayml/stable-diffusion-v1-5",
-                local_dir=local_path,
-            )
+        AWS_KEY = os.environ['peak_AWS_KEY']
+        AWS_SECRET = os.environ['peak_AWS_SECRET']
+        print("Value is " + AWS_KEY + " and " + AWS_SECRET)
         self.pipe = StableDiffusionPipeline.from_pretrained(
-            local_path,
+            "runwayml/stable-diffusion-v1-5",
             torch_dtype=torch.float16,
             device_map='auto'
         )

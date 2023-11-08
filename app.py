@@ -7,8 +7,8 @@ import os
 
 class InferlessPythonModel:
     def initialize(self):
-        AWS_KEY = os.environ['peak_AWS_KEY']
-        AWS_SECRET = os.environ['peak_AWS_SECRET']
+        AWS_KEY = os.environ.get('AWS_KEY', "not hello" )
+        AWS_SECRET = os.environ.get('AWS_SECRET'] ,  "not world" )
         print("Value is " + AWS_KEY + " and " + AWS_SECRET)
         self.pipe = StableDiffusionPipeline.from_pretrained(
             "runwayml/stable-diffusion-v1-5",

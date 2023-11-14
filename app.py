@@ -24,8 +24,7 @@ class InferlessPythonModel:
         data = { "generated_image_base64" : img_str }
         // Call the Webhook 
         response = requests.post(WEBHOOK_URL, json=response)
-        
-        return data
+        return None  
 
     def finalize(self):
         self.pipe = None

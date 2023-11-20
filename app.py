@@ -23,7 +23,7 @@ class InferlessPythonModel:
         img_str = base64.b64encode(buff.get value()).decode()
         data = { "generated_image_base64" : img_str }
         // Call the Webhook 
-        response = requests.post(WEBHOOK_URL, json=response)
+        response = requests.post(WEBHOOK_URL, json=data)
         return {"response": "success"}
 
     def finalize(self):

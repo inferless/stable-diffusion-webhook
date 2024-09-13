@@ -9,11 +9,7 @@ WEBHOOK_URL = "http://your-webhook-url.com" # You can also use os.env.get("WEBHO
 
 class InferlessPythonModel:
     def initialize(self):
-        self.pipe = StableDiffusionPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5",
-            torch_dtype=torch.float16,
-            device_map='auto'
-        )
+        self.pipe = StableDiffusionPipeline.from_pretrained("crynux-ai/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
         
     def infer(self, inputs):
         prompt = inputs["prompt"]
@@ -22,7 +18,7 @@ class InferlessPythonModel:
         image.save(buff, format="JPEG")
         img_str = base64.b64encode(buff.get value()).decode()
         data = { "generated_image_base64" : img_str }
-        // Call the Webhook 
+        # Call the Webhook 
         response = requests.post(WEBHOOK_URL, json=response)
         return {"response": "success"}
 

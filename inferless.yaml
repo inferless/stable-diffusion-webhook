@@ -31,7 +31,7 @@ configuration:
   ram: '20'
 env:
   # Add your environment variables here
-  # ENV: 'PROD'
+  WEBHOOK_URL": <YOUR_WEBHOOK_URL>
 secrets:
   # Add your secret ids here you can find it by running `inferless secrets list`
   # - 65723205-ce21-4392-a10b-3tf00c58988c
@@ -40,6 +40,6 @@ optional:
   input_file_name: input.json
   output_file_name: output.json
   runtime_file_name: inferless-runtime-config.yaml
-model_url: https://github.com/inferless/Stable-diffusion-v1-5.git
+model_url: https://github.com/inferless/stable-diffusion-webhook.git
 provider: GITHUB
 io_schema: true
